@@ -8,6 +8,9 @@ public class Presenter {
         this.view = view;
     }
 
+    public void onResume() {
+        view.showBaseProducts();
+    }
 
 
 }

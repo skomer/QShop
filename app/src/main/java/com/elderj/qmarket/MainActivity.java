@@ -5,10 +5,23 @@ import android.support.v7.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity implements MainActivityView {
 
+    Presenter presenter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        presenter = new Presenter(this);
+    }
+
+    @Override
+    protected void onResume() {
+        presenter.onResume();
+    }
+
+    public void showBaseProducts() {
+
     }
 
 
