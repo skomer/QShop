@@ -1,7 +1,9 @@
 package com.elderj.qmarket;
 
+import java.util.List;
+
 public interface MainActivityView {
 
-    void showBaseProducts();
+    void showBaseProducts(List<String> productNames);
 
 }
