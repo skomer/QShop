@@ -13,3 +13,9 @@ public class MainActivity extends AppCompatActivity {
 
 
 }
+
+// load some existing products and a supermarket balance
+// have a 'new supermarket' template
+// read from db
+// first of all get it to load up some products
+// show both supermarket stock and customer basket
