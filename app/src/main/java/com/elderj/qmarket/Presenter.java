@@ -7,6 +7,7 @@ public class Presenter {
 
     MainActivityView view;
     Shop shop;
+    List<Product> baseProducts;
 
     public Presenter(MainActivityView view, Shop shop) {
         this.view = view;
@@ -14,7 +15,7 @@ public class Presenter {
     }
 
     public void onResume() {
-        List<Product> baseProducts = new ArrayList<>();
+        baseProducts = new ArrayList<>();
         baseProducts.add(new Product("potatoes", 1.0, 2.0));
         baseProducts.add(new Product("peas", 0.05, 0.10));
         baseProducts.add(new Product("lemonade", 2.0, 4.0));
@@ -26,12 +27,25 @@ public class Presenter {
         }
 
         view.showBaseProducts(productNames);
-        view.showBaseShop(new Shop("potatoes, eggs, peas", 1000.0));
+        view.showBaseShop(shop);
     }
 
     public void buyStock(String productName, int quantity) {
+        double buyPrice = 0;
+        double buyCost = 0;
+        for (Product product : baseProducts) {
+            if (product.name.equals(productName)) {
+                buyPrice = product.buyPrice;
+                break;
+            }
+        }
 
+        buyCost = buyPrice * quantity;
+        String stock = shop.getStock();
+        shop.setStock(stock + "+" + String.valueOf(quantity));
 
+        double balance = shop.getBalance();
+        shop.setBalance(balance - buyCost);
     }
 
 

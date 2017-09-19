@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
         stock = (TextView) findViewById(R.id.shop_stock);
         balance = (TextView) findViewById(R.id.shop_balance);
 
-        presenter = new Presenter(this);
+        presenter = new Presenter(this, new Shop("potatoes, eggs, peas", 1000.0));
     }
 
     @Override
