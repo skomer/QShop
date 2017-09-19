@@ -1,4 +1,4 @@
-package com.elderj.qmarket;
+package com.elderj.qshop;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

@@ -1,4 +1,4 @@
-package com.elderj.qmarket;
+package com.elderj.qshop;
 
 import java.util.ArrayList;
 import java.util.List;

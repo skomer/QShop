@@ -1,4 +1,4 @@
-package com.elderj.qmarket;
+package com.elderj.qshop;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.elderj.qmarket", appContext.getPackageName());
+        assertEquals("com.elderj.qshop", appContext.getPackageName());
     }
 }
