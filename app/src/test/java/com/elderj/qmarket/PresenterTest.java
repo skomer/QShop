@@ -37,5 +37,13 @@ public class PresenterTest {
         verify(view).showBaseSupermarket(any(Supermarket.class));
     }
 
+    @Test
+    public void presenter_can_buy_in_stock_for_the_supermarket() {
+        presenter.buyStock("stock", 10);
+
+        verify(market).setStock();
+        verify(market).setBalance();
+    }
+
 
 }
