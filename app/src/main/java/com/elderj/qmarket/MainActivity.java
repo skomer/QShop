@@ -9,14 +9,18 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements MainActivityView {
 
     Presenter presenter;
-    TextView placeholder;
+    TextView baseProducts;
+    TextView stock;
+    TextView balance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        placeholder = (TextView) findViewById(R.id.base_products);
+        baseProducts = (TextView) findViewById(R.id.base_products);
+        stock = (TextView) findViewById(R.id.supermarket_stock);
+        balance = (TextView) findViewById(R.id.supermarket_balance);
 
         presenter = new Presenter(this);
     }
@@ -27,18 +31,12 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
     }
 
     public void showBaseProducts(List<String> productNames) {
-        placeholder.setText("list of products");
+        baseProducts.setText("list of products");
     }
 
-    public void showBaseSupermarket() {
-
+    public void showBaseSupermarket(Supermarket baseMarket) {
+        stock.setText(baseMarket.getStock());
+        balance.setText(Double.toString(baseMarket.getBalance()));
     }
-
 
 }
-
-// load some existing products and a supermarket balance
-// have a 'new supermarket' template
-// read from db
-// first of all get it to load up some products
-// show both supermarket stock and customer basket

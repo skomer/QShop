@@ -3,9 +3,9 @@ package com.elderj.qmarket;
 public class Supermarket {
 
     private String stock;
-    private long balance;
+    private double balance;
 
-    public Supermarket(String stock, long balance) {
+    public Supermarket(String stock, double balance) {
         this.stock = stock;
         this.balance = balance;
     }
@@ -18,11 +18,11 @@ public class Supermarket {
         this.stock = stock;
     }
 
-    public long getBalance() {
+    public double getBalance() {
         return balance;
     }
 
-    public void setBalance(long balance) {
+    public void setBalance(double balance) {
         this.balance = balance;
     }
 }
