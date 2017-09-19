@@ -12,6 +12,7 @@ public class Presenter {
 
     public void onResume() {
         view.showBaseProducts(new ArrayList<String>());
+        view.showBaseSupermarket();
     }
 
 

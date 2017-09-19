@@ -30,6 +30,10 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
         placeholder.setText("list of products");
     }
 
+    public void showBaseSupermarket() {
+
+    }
+
 
 }
 
