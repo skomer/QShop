@@ -40,6 +40,8 @@ public class Presenter {
         if (newBalance > 0) {
             shop.setStock(product.name, quantity);
             shop.setBalance(newBalance);
+            view.showShopStock(shop);
+            view.showShopBalance(Double.toString(newBalance));
         }
     }
 
@@ -65,6 +67,8 @@ public class Presenter {
 
         shop.setBalance(newBalance);
         shop.setStock(product.name, newStockQuantity);
+        view.showShopStock(shop);
+        view.showShopBalance(Double.toString(newBalance));
     }
 
 }
