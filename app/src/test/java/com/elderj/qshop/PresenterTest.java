@@ -4,7 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.anyListOf;
+import static org.mockito.Matchers.anyMapOf;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -39,7 +39,7 @@ public class PresenterTest {
     }
 
     @Test
-    public void presenter_can_buy_in_stock_for_the_supermarket() {
+    public void presenter_can_buy_in_stock_for_the_shop() {
         presenter.onResume();
         when(shop.getBalance()).thenReturn(1000.00);
         presenter.buyStock("eggs", 1);
@@ -67,6 +67,16 @@ public class PresenterTest {
 
         verify(shop, times(0)).setStock(any(Product.class), any(Integer.class));
         verify(shop, times(0)).setBalance(any(double.class));
+    }
+
+    @Test
+    public void presenter_can_sell_stock_from_the_shop() {
+        presenter.onResume();
+        
+        presenter.sellStock("eggs", 3);
+
+        verify(shop).setBalance(any(double.class));
+        verify(shop).setStock(any(Product.class), any(Integer.class));
     }
 
 }
