@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        placeholder = (TextView) findViewById(R.id.placeholder);
+        placeholder = (TextView) findViewById(R.id.base_products);
 
         presenter = new Presenter(this);
     }

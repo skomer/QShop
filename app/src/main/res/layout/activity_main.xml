@@ -7,7 +7,31 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="text here"
-        android:id="@+id/placeholder" />
+        android:margin="10dp"
+        android:id="@+id/base_products" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Supermarket"
+        android:margin="10dp"
+        android:id="@+id/supermarket_title" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Balance"
+        android:margin="10dp"
+        android:id="@+id/supermarket_balance" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Stock"
+        android:margin="10dp"
+        android:id="@+id/supermarket_stock" />
+
+
 
 
 </LinearLayout>
