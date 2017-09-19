@@ -53,5 +53,18 @@ public class Presenter {
         return new Product("", 0.0, 0.0);
     }
 
+    public void sellStock(String productName, int sellQuantity) {
+        Product product = getProduct(productName);
+
+        double sellPrice = product.sellPrice * sellQuantity;
+        double newBalance = shop.getBalance() + sellPrice;
+
+        // Refactor. Can't stub shop.getStock().get(product.name) => code smell?
+        Map<String, Integer> stock = shop.getStock();
+        int newStockQuantity = stock.get(product.name) - sellQuantity;
+
+        shop.setBalance(newBalance);
+        shop.setStock(product.name, newStockQuantity);
+    }
 
 }
