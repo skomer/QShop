@@ -6,9 +6,11 @@ import java.util.List;
 public class Presenter {
 
     MainActivityView view;
+    Shop shop;
 
-    public Presenter(MainActivityView view) {
+    public Presenter(MainActivityView view, Shop shop) {
         this.view = view;
+        this.shop = shop;
     }
 
     public void onResume() {
@@ -19,7 +21,13 @@ public class Presenter {
         baseProducts.add("eggs");
 
         view.showBaseProducts(baseProducts);
-        view.showBaseSupermarket(new Supermarket("potatoes, eggs, peas", 1000.00));
+        view.showBaseShop(new Shop("potatoes, eggs, peas", 1000.00));
     }
+
+    public void buyStock(String productName, int quantity) {
+
+
+    }
+
 
 }

@@ -1,11 +1,11 @@
 package com.elderj.qmarket;
 
-public class Supermarket {
+public class Shop {
 
     private String stock;
     private double balance;
 
-    public Supermarket(String stock, double balance) {
+    public Shop(String stock, double balance) {
         this.stock = stock;
         this.balance = balance;
     }

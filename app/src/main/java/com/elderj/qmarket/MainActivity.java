@@ -19,8 +19,8 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
         setContentView(R.layout.activity_main);
 
         baseProducts = (TextView) findViewById(R.id.base_products);
-        stock = (TextView) findViewById(R.id.supermarket_stock);
-        balance = (TextView) findViewById(R.id.supermarket_balance);
+        stock = (TextView) findViewById(R.id.shop_stock);
+        balance = (TextView) findViewById(R.id.shop_balance);
 
         presenter = new Presenter(this);
     }
@@ -34,9 +34,9 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
         baseProducts.setText("list of products");
     }
 
-    public void showBaseSupermarket(Supermarket baseMarket) {
-        stock.setText(baseMarket.getStock());
-        balance.setText(Double.toString(baseMarket.getBalance()));
+    public void showBaseShop(Shop baseShop) {
+        stock.setText(baseShop.getStock());
+        balance.setText(Double.toString(baseShop.getBalance()));
     }
 
 }

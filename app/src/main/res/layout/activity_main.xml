@@ -13,22 +13,22 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Supermarket"
+        android:text="Shop"
         android:layout_margin="10dp"
-        android:id="@+id/supermarket_title" />
+        android:id="@+id/shop_title" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Stock"
         android:layout_margin="10dp"
-        android:id="@+id/supermarket_stock" />
+        android:id="@+id/shop_stock" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Balance"
         android:layout_margin="10dp"
-        android:id="@+id/supermarket_balance" />
+        android:id="@+id/shop_balance" />
 
 </LinearLayout>
