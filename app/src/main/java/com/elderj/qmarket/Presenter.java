@@ -31,8 +31,23 @@ public class Presenter {
     }
 
     public void buyStock(String productName, int quantity) {
+        double buyPrice = getProductPrice(productName);
+
+        if (getProductPrice(productName) != 0) {
+            double buyCost = 0;
+
+            buyCost = buyPrice * quantity;
+            String stock = shop.getStock();
+            shop.setStock(stock + "+" + String.valueOf(quantity));
+
+            double balance = shop.getBalance();
+            shop.setBalance(balance - buyCost);
+        }
+    }
+
+    private double getProductPrice(String productName) {
         double buyPrice = 0;
-        double buyCost = 0;
+
         for (Product product : baseProducts) {
             if (product.name.equals(productName)) {
                 buyPrice = product.buyPrice;
@@ -40,12 +55,7 @@ public class Presenter {
             }
         }
 
-        buyCost = buyPrice * quantity;
-        String stock = shop.getStock();
-        shop.setStock(stock + "+" + String.valueOf(quantity));
-
-        double balance = shop.getBalance();
-        shop.setBalance(balance - buyCost);
+        return buyPrice;
     }
 
 
