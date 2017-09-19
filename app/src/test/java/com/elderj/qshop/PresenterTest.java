@@ -25,17 +25,17 @@ public class PresenterTest {
     }
 
     @Test
-    public void onResume_presenter_tells_view_to_show_base_products() {
+    public void onResume_presenter_tells_view_to_show_stock() {
         presenter.onResume();
 
-        verify(view).showBaseProducts(anyListOf(String.class));
+        verify(view).showShopStock(any(Shop.class));
     }
 
     @Test
-    public void onResume_presenter_tells_view_to_load_base_supermarket() {
+    public void onResume_presenter_tells_view_to_show_shop_balance() {
         presenter.onResume();
 
-        verify(view).showBaseShop(any(Shop.class));
+        verify(view).showShopBalance(any(String.class));
     }
 
     @Test

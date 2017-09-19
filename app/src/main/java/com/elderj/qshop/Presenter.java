@@ -27,8 +27,8 @@ public class Presenter {
             productNames.add(product.name);
         }
 
-        view.showBaseProducts(productNames);
-        view.showBaseShop(shop);
+        view.showShopBalance(Double.toString(shop.getBalance()));
+        view.showShopStock(shop);
     }
 
     public void buyStock(String productName, int quantity) {
@@ -38,7 +38,6 @@ public class Presenter {
         double newBalance = balance - buyCost;
 
         if (newBalance > 0) {
-//            Map<Product, Integer> stock = shop.getStock();
             shop.setStock(product, quantity);
             shop.setBalance(newBalance);
         }

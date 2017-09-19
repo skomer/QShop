@@ -36,13 +36,12 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
         presenter.onResume();
     }
 
-    public void showBaseProducts(List<String> productNames) {
-        baseProducts.setText("list of products");
+    public void showShopStock(Shop shop) {
+        stock.setText("STOCK");
     }
 
-    public void showBaseShop(Shop baseShop) {
-        stock.setText("STOCK");
-        balance.setText(Double.toString(baseShop.getBalance()));
+    public void showShopBalance(String shopBalance) {
+        balance.setText(shopBalance);
     }
 
 }
