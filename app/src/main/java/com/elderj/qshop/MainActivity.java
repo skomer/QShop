@@ -4,7 +4,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity implements MainActivityView {
 
@@ -22,7 +24,11 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
         stock = (TextView) findViewById(R.id.shop_stock);
         balance = (TextView) findViewById(R.id.shop_balance);
 
-        presenter = new Presenter(this, new Shop("potatoes, eggs, peas", 1000.0));
+        Map<Product, Integer> stock = new HashMap();
+        stock.put(new Product("eggs", 1, 2), 100);
+        stock.put(new Product("apples", 0.5, 1), 100);
+
+        presenter = new Presenter(this, new Shop(stock, 1000.0));
     }
 
     @Override
@@ -35,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
     }
 
     public void showBaseShop(Shop baseShop) {
-        stock.setText(baseShop.getStock());
+        stock.setText("STOCK");
         balance.setText(Double.toString(baseShop.getBalance()));
     }
 

@@ -2,6 +2,7 @@ package com.elderj.qshop;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class Presenter {
 
@@ -31,29 +32,26 @@ public class Presenter {
     }
 
     public void buyStock(String productName, int quantity) {
-        double buyPrice = getBuyPrice(productName);
-        double buyCost = buyPrice * quantity;
+        Product product = getProduct(productName);
+        double buyCost = product.buyPrice * quantity;
         double balance = shop.getBalance();
         double newBalance = balance - buyCost;
 
         if (newBalance > 0) {
-            String stock = shop.getStock();
-            shop.setStock(stock + "+" + String.valueOf(quantity));
+//            Map<Product, Integer> stock = shop.getStock();
+            shop.setStock(product, quantity);
             shop.setBalance(newBalance);
         }
     }
 
-    private double getBuyPrice(String productName) {
-        double buyPrice = 0;
-
+    private Product getProduct(String productName) {
         for (Product product : baseProducts) {
             if (product.name.equals(productName)) {
-                buyPrice = product.buyPrice;
-                break;
+                return product;
             }
         }
 
-        return buyPrice;
+        return new Product("", 0.0, 0.0);
     }
 
 

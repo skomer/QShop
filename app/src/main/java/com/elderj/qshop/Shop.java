@@ -1,28 +1,30 @@
 package com.elderj.qshop;
 
+import java.util.Map;
+
 public class Shop {
 
-    private String stock;
+    private Map<Product, Integer> stock;
     private double balance;
 
-    public Shop(String stock, double balance) {
+    public Shop(Map<Product, Integer> stock, double balance) {
         this.stock = stock;
         this.balance = balance;
     }
 
-    public String getStock() {
+    public Map<Product, Integer> getStock() {
         return stock;
     }
 
-    public void setStock(String stock) {
-        this.stock = stock;
+    public void setStock(Product product, int newQuantity) {
+        stock.put(product, newQuantity);
     }
 
     public double getBalance() {
         return balance;
     }
 
-    public void setBalance(double balance) {
-        this.balance = balance;
+    public void setBalance(double newBalance) {
+        this.balance = newBalance;
     }
 }
