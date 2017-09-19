@@ -31,21 +31,19 @@ public class Presenter {
     }
 
     public void buyStock(String productName, int quantity) {
-        double buyPrice = getProductPrice(productName);
+        double buyPrice = getBuyPrice(productName);
+        double buyCost = buyPrice * quantity;
+        double balance = shop.getBalance();
+        double newBalance = balance - buyCost;
 
-        if (getProductPrice(productName) != 0) {
-            double buyCost = 0;
-
-            buyCost = buyPrice * quantity;
+        if (newBalance > 0) {
             String stock = shop.getStock();
             shop.setStock(stock + "+" + String.valueOf(quantity));
-
-            double balance = shop.getBalance();
-            shop.setBalance(balance - buyCost);
+            shop.setBalance(newBalance);
         }
     }
 
-    private double getProductPrice(String productName) {
+    private double getBuyPrice(String productName) {
         double buyPrice = 0;
 
         for (Product product : baseProducts) {

@@ -41,6 +41,7 @@ public class PresenterTest {
     @Test
     public void presenter_can_buy_in_stock_for_the_supermarket() {
         presenter.onResume();
+        when(shop.getBalance()).thenReturn(1000.00);
         presenter.buyStock("eggs", 1);
 
         verify(shop).setStock(any(String.class));
@@ -62,6 +63,7 @@ public class PresenterTest {
 
         when(shop.getBalance()).thenReturn(0.0);
         presenter.buyStock("eggs", 1000);
+        presenter.buyStock("matches", 1);
 
         verify(shop, times(0)).setStock(any(String.class));
         verify(shop, times(0)).setBalance(any(double.class));
