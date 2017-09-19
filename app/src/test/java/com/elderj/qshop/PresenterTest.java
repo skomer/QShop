@@ -87,4 +87,19 @@ public class PresenterTest {
         verify(shop).setStock(any(String.class), any(Integer.class));
     }
 
+    @Test
+    public void if_stock_quantity_too_low_presenter_does_not_sell_stock() {
+        presenter.onResume();
+
+        Map<String, Integer> stock = new HashMap();
+        stock.put("egg", 1);
+
+        when(shop.getStock()).thenReturn(stock);
+        when(shop.getBalance()).thenReturn(1000.00);
+        presenter.sellStock("egg", 100);
+
+        verify(shop, times(0)).setBalance(any(double.class));
+        verify(shop, times(0)).setStock(any(String.class), any(Integer.class));
+    }
+
 }
