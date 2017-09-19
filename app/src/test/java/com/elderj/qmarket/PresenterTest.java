@@ -6,6 +6,7 @@ import org.junit.Test;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyListOf;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 
@@ -43,6 +44,15 @@ public class PresenterTest {
 
         verify(shop).setStock(any(String.class));
         verify(shop).setBalance(any(double.class));
+    }
+
+    @Test
+    public void if_product_not_in_product_list_presenter_does_not_buy_product() {
+        presenter.onResume();
+        presenter.buyStock("matches", 1);
+
+        verify(shop, times(0)).setStock(any(String.class));
+        verify(shop, times(0)).setBalance(any(double.class));
     }
 
 }
