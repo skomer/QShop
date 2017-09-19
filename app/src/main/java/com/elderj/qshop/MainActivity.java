@@ -24,9 +24,9 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
         stock = (TextView) findViewById(R.id.shop_stock);
         balance = (TextView) findViewById(R.id.shop_balance);
 
-        Map<Product, Integer> stock = new HashMap();
-        stock.put(new Product("eggs", 1, 2), 100);
-        stock.put(new Product("apples", 0.5, 1), 100);
+        Map<String, Integer> stock = new HashMap();
+        stock.put("egg", 100);
+        stock.put("apple", 100);
 
         presenter = new Presenter(this, new Shop(stock, 1000.0));
     }

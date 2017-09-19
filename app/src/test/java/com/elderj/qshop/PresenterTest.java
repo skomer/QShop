@@ -3,6 +3,9 @@ package com.elderj.qshop;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyMapOf;
 import static org.mockito.Mockito.mock;
@@ -42,9 +45,9 @@ public class PresenterTest {
     public void presenter_can_buy_in_stock_for_the_shop() {
         presenter.onResume();
         when(shop.getBalance()).thenReturn(1000.00);
-        presenter.buyStock("eggs", 1);
+        presenter.buyStock("egg", 1);
 
-        verify(shop).setStock(any(Product.class), any(Integer.class));
+        verify(shop).setStock(any(String.class), any(Integer.class));
         verify(shop).setBalance(any(double.class));
     }
 
@@ -53,7 +56,7 @@ public class PresenterTest {
         presenter.onResume();
         presenter.buyStock("matches", 1);
 
-        verify(shop, times(0)).setStock(any(Product.class), any(Integer.class));
+        verify(shop, times(0)).setStock(any(String.class), any(Integer.class));
         verify(shop, times(0)).setBalance(any(double.class));
     }
 
@@ -62,21 +65,26 @@ public class PresenterTest {
         presenter.onResume();
 
         when(shop.getBalance()).thenReturn(0.0);
-        presenter.buyStock("eggs", 1000);
+        presenter.buyStock("egg", 1000);
         presenter.buyStock("matches", 1);
 
-        verify(shop, times(0)).setStock(any(Product.class), any(Integer.class));
+        verify(shop, times(0)).setStock(any(String.class), any(Integer.class));
         verify(shop, times(0)).setBalance(any(double.class));
     }
 
     @Test
     public void presenter_can_sell_stock_from_the_shop() {
         presenter.onResume();
-        
-        presenter.sellStock("eggs", 3);
+
+        Map<String, Integer> stock = new HashMap();
+        stock.put("egg", 100);
+
+        when(shop.getStock()).thenReturn(stock);
+        when(shop.getBalance()).thenReturn(1000.00);
+        presenter.sellStock("egg", 1);
 
         verify(shop).setBalance(any(double.class));
-        verify(shop).setStock(any(Product.class), any(Integer.class));
+        verify(shop).setStock(any(String.class), any(Integer.class));
     }
 
 }

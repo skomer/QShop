@@ -4,20 +4,20 @@ import java.util.Map;
 
 public class Shop {
 
-    private Map<Product, Integer> stock;
+    private Map<String, Integer> stock;
     private double balance;
 
-    public Shop(Map<Product, Integer> stock, double balance) {
+    public Shop(Map<String, Integer> stock, double balance) {
         this.stock = stock;
         this.balance = balance;
     }
 
-    public Map<Product, Integer> getStock() {
+    public Map<String, Integer> getStock() {
         return stock;
     }
 
-    public void setStock(Product product, int newQuantity) {
-        stock.put(product, newQuantity);
+    public void setStock(String productName, int newQuantity) {
+        stock.put(productName, newQuantity);
     }
 
     public double getBalance() {

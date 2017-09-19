@@ -20,7 +20,7 @@ public class Presenter {
         baseProducts.add(new Product("potatoes", 1.0, 2.0));
         baseProducts.add(new Product("peas", 0.05, 0.10));
         baseProducts.add(new Product("lemonade", 2.0, 4.0));
-        baseProducts.add(new Product("eggs", 0.5, 1.0));
+        baseProducts.add(new Product("egg", 0.5, 1.0));
 
         List<String> productNames = new ArrayList<>();
         for (Product product : baseProducts) {
@@ -38,7 +38,7 @@ public class Presenter {
         double newBalance = balance - buyCost;
 
         if (newBalance > 0) {
-            shop.setStock(product, quantity);
+            shop.setStock(product.name, quantity);
             shop.setBalance(newBalance);
         }
     }

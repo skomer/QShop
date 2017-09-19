@@ -1,6 +1,5 @@
 package com.elderj.qshop;
 
-import java.util.List;
 
 public interface MainActivityView {
 
