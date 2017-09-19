@@ -1,5 +1,7 @@
 package com.elderj.qmarket;
 
+import java.util.ArrayList;
+
 public class Presenter {
 
     MainActivityView view;
@@ -9,7 +11,7 @@ public class Presenter {
     }
 
     public void onResume() {
-        view.showBaseProducts();
+        view.showBaseProducts(new ArrayList<String>());
     }
 
 
