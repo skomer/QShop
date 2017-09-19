@@ -8,6 +8,7 @@ import static org.mockito.Matchers.anyListOf;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 
 public class PresenterTest {
@@ -50,6 +51,17 @@ public class PresenterTest {
     public void if_product_not_in_product_list_presenter_does_not_buy_product() {
         presenter.onResume();
         presenter.buyStock("matches", 1);
+
+        verify(shop, times(0)).setStock(any(String.class));
+        verify(shop, times(0)).setBalance(any(double.class));
+    }
+
+    @Test
+    public void if_shop_cannot_afford_product_presenter_does_not_buy_product() {
+        presenter.onResume();
+
+        when(shop.getBalance()).thenReturn(0.0);
+        presenter.buyStock("eggs", 1000);
 
         verify(shop, times(0)).setStock(any(String.class));
         verify(shop, times(0)).setBalance(any(double.class));
