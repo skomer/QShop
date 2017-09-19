@@ -14,14 +14,19 @@ public class Presenter {
     }
 
     public void onResume() {
-        List<String> baseProducts = new ArrayList<>();
-        baseProducts.add("potatoes");
-        baseProducts.add("peas");
-        baseProducts.add("lemonade");
-        baseProducts.add("eggs");
+        List<Product> baseProducts = new ArrayList<>();
+        baseProducts.add(new Product("potatoes", 1.0, 2.0));
+        baseProducts.add(new Product("peas", 0.05, 0.10));
+        baseProducts.add(new Product("lemonade", 2.0, 4.0));
+        baseProducts.add(new Product("eggs", 0.5, 1.0));
 
-        view.showBaseProducts(baseProducts);
-        view.showBaseShop(new Shop("potatoes, eggs, peas", 1000.00));
+        List<String> productNames = new ArrayList<>();
+        for (Product product : baseProducts) {
+            productNames.add(product.name);
+        }
+
+        view.showBaseProducts(productNames);
+        view.showBaseShop(new Shop("potatoes, eggs, peas", 1000.0));
     }
 
     public void buyStock(String productName, int quantity) {

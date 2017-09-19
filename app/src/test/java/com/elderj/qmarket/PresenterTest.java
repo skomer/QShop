@@ -40,9 +40,8 @@ public class PresenterTest {
     public void presenter_can_buy_in_stock_for_the_supermarket() {
         presenter.buyStock("", 1);
 
-        verify(shop).setStock(any(String.class), any(Integer.class));
+        verify(shop).setStock(any(String.class));
         verify(shop).setBalance(any(double.class));
     }
-
 
 }
