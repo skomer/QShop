@@ -65,10 +65,12 @@ public class Presenter {
         Map<String, Integer> stock = shop.getStock();
         int newStockQuantity = stock.get(product.name) - sellQuantity;
 
-        shop.setBalance(newBalance);
-        shop.setStock(product.name, newStockQuantity);
-        view.showShopStock(shop);
-        view.showShopBalance(Double.toString(newBalance));
+        if (newStockQuantity > -1) {
+            shop.setBalance(newBalance);
+            shop.setStock(product.name, newStockQuantity);
+            view.showShopStock(shop);
+            view.showShopBalance(Double.toString(newBalance));
+        }
     }
 
 }
