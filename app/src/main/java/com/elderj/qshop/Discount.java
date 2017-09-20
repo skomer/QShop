@@ -5,6 +5,6 @@ public enum Discount {
     NONE,
     BOGOF,
     TWOFORONE,
-    TENPERCENTOFF
+    BUYTENSAVETENPERCENT
 
 }

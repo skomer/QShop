@@ -2,8 +2,11 @@ package com.elderj.qshop;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,18 +14,29 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity implements MainActivityView {
 
     Presenter presenter;
-    TextView baseProducts;
-    TextView stock;
-    TextView balance;
+    private ListView listView;
+    private TextView baseProducts;
+    private TextView stock;
+    private TextView balance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        listView = (ListView) findViewById(R.id.list_product);
         baseProducts = (TextView) findViewById(R.id.base_products);
         stock = (TextView) findViewById(R.id.shop_stock);
         balance = (TextView) findViewById(R.id.shop_balance);
+
+        List<String> productNames = new ArrayList<>();
+        productNames.add("egg");
+        productNames.add("pineapple");
+        productNames.add("rice");
+        productNames.add("soap");
+
+        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, productNames);
+        listView.setAdapter(adapter);
 
         Map<String, Integer> stock = new HashMap();
         stock.put("egg", 100);
