@@ -1,32 +1,23 @@
 package com.elderj.qshop;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 public class Presenter {
 
     MainActivityView view;
     Shop shop;
-    List<Product> baseProducts;
+    ArrayList<Product> productCatalogue;
+    Discounting discounter;
 
-    public Presenter(MainActivityView view, Shop shop) {
+    public Presenter(MainActivityView view, Shop shop, ArrayList<Product> productCatalogue, Discounting discounter) {
         this.view = view;
         this.shop = shop;
+        this.productCatalogue = productCatalogue;
+        this.discounter = discounter;
     }
 
     public void onResume() {
-//        baseProducts = new ArrayList<>();
-//        baseProducts.add(new Product("potatoes", 1.0, 2.0, Discount.NONE));
-//        baseProducts.add(new Product("peas", 0.05, 0.10, Discount.NONE));
-//        baseProducts.add(new Product("lemonade", 2.0, 4.0, Discount.NONE));
-//        baseProducts.add(new Product("egg", 0.5, 1.0, Discount.NONE));
-//
-//        List<String> productNames = new ArrayList<>();
-//        for (Product product : baseProducts) {
-//            productNames.add(product.name);
-//        }
-
         view.showShopBalance(Double.toString(shop.getBalance()));
         view.showShopStock(shop);
     }
@@ -49,7 +40,7 @@ public class Presenter {
     }
 
     private Product getProduct(String productName) {
-        for (Product product : baseProducts) {
+        for (Product product : productCatalogue) {
             if (product.name.equals(productName)) {
                 return product;
             }

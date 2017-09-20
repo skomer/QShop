@@ -31,20 +31,21 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
         hideShow = (TextView) findViewById(R.id.hide_show);
         hideShow.setVisibility(View.GONE);
 
-        ArrayList<Product> products = new ArrayList<>();
-        products.add(new Product("egg", 1.0, 2.0, Discount.NONE));
-        products.add(new Product("pineapple", 3.0, 5.5, Discount.TWOFORONE));
-        products.add(new Product("rice", 1.5, 3.0, Discount.NONE));
-        products.add(new Product("juice", 0.7, 3.0, Discount.BUYTENSAVETENPERCENT));
+        ArrayList<Product> productCatalogue = new ArrayList<>();
+        productCatalogue.add(new Product("egg", 1.0, 2.0, Discount.NONE));
+        productCatalogue.add(new Product("apple", 0.5, 1.1, Discount.NONE));
+        productCatalogue.add(new Product("pineapple", 3.0, 5.5, Discount.TWOFORONE));
+        productCatalogue.add(new Product("rice", 1.5, 3.0, Discount.NONE));
+        productCatalogue.add(new Product("juice", 0.7, 3.0, Discount.BUYTENSAVETENPERCENT));
 
-        StockAdapter adapter = new StockAdapter(this, products);
+        StockAdapter adapter = new StockAdapter(this, productCatalogue);
         stockListView.setAdapter(adapter);
 
         Map<String, Integer> stock = new HashMap();
         stock.put("egg", 100);
         stock.put("apple", 100);
 
-        presenter = new Presenter(this, new Shop(stock, 1000.0));
+        presenter = new Presenter(this, new Shop(stock, 1000.0), productCatalogue, new Discounter());
     }
 
     @Override
