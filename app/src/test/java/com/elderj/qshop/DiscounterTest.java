@@ -11,7 +11,17 @@ public class DiscounterTest {
     private Discounting discounter;
 
     @Test
-    public void discounter_applies_bogof_discount_when_quantity_is_even() {
+    public void discounter_applies_no_buying_discount_when_none_specified() {
+        discounter = new Discounter();
+        Product product = new Product("", 1.0, 2.0, Discount.NONE);
+
+        double actualBuyCost = discounter.getBuyCost(product, 2);
+
+        assertThat(2.0, is(equalTo(actualBuyCost)));
+    }
+
+    @Test
+    public void discounter_applies_buying_bogof_discount_when_quantity_is_even() {
         discounter = new Discounter();
         Product product = new Product("", 1.0, 2.0, Discount.BOGOF);
 
@@ -21,7 +31,7 @@ public class DiscounterTest {
     }
 
     @Test
-    public void discounter_applies_bogof_when_quantity_is_odd() {
+    public void discounter_applies_buying_bogof_when_quantity_is_odd() {
         discounter = new Discounter();
         Product product = new Product("", 1.0, 2.0, Discount.BOGOF);
 
@@ -29,6 +39,5 @@ public class DiscounterTest {
 
         assertThat(4.0, is(equalTo(actualBuyCost)));
     }
-
 
 }
