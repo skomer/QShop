@@ -102,6 +102,17 @@ public class PresenterTest {
         verify(shop, times(0)).setStock(any(String.class), any(Integer.class));
     }
 
+    @Test
+    public void on_orderStockButtonTapped_presenter_buys_stock() {
+        Product product = new Product("product", 0, 0, Discount.NONE);
+
+        presenter.onResume();
+        when(shop.getBalance()).thenReturn(1000.00);
+        presenter.orderStockButtonTapped(product);
+
+        verify(shop).setStock(any(String.class), any(Integer.class));
+        verify(shop).setBalance(any(double.class));
+    }
 
 
 }
