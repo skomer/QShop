@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
         ArrayList<Product> productCatalogue = new ArrayList<>();
         productCatalogue.add(new Product("egg", 1.0, 2.0, Discount.NONE));
         productCatalogue.add(new Product("apple", 0.5, 1.1, Discount.NONE));
-        productCatalogue.add(new Product("pineapple", 3.0, 5.5, Discount.TWOFORONE));
+        productCatalogue.add(new Product("pineapple", 3.0, 5.5, Discount.THREEFORTHEPRICEOFTWO));
         productCatalogue.add(new Product("rice", 1.5, 3.0, Discount.NONE));
         productCatalogue.add(new Product("juice", 0.7, 3.0, Discount.BUYTENSAVETENPERCENT));
 

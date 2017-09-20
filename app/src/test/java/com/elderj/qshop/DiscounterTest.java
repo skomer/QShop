@@ -40,4 +40,14 @@ public class DiscounterTest {
         assertThat(4.0, is(equalTo(actualBuyCost)));
     }
 
+    @Test
+    public void discounter_applies_buying_three_for_two_discount() {
+        discounter = new Discounter();
+        Product product = new Product("", 1.0, 2.0, Discount.THREEFORTHEPRICEOFTWO);
+
+        double actualBuyCost = discounter.getBuyCost(product, 7);
+
+        assertThat(5.0, is(equalTo(actualBuyCost)));
+    }
+
 }
