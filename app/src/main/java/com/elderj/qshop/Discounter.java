@@ -32,6 +32,13 @@ public class Discounter implements Discounting {
                 }
                 double discountAmount = product.buyPrice * discountQuantity;
                 return priceBeforeDiscount - discountAmount;
+            case BUYTENSAVETENPERCENT:
+//                int discountQuantity;
+                if (quantity % 10 == 0) {
+                    return priceBeforeDiscount * 0.9;
+                }
+
+
         }
 
 
