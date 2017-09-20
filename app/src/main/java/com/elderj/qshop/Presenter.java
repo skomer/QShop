@@ -17,10 +17,10 @@ public class Presenter {
 
     public void onResume() {
         baseProducts = new ArrayList<>();
-        baseProducts.add(new Product("potatoes", 1.0, 2.0));
-        baseProducts.add(new Product("peas", 0.05, 0.10));
-        baseProducts.add(new Product("lemonade", 2.0, 4.0));
-        baseProducts.add(new Product("egg", 0.5, 1.0));
+        baseProducts.add(new Product("potatoes", 1.0, 2.0, Discount.NONE));
+        baseProducts.add(new Product("peas", 0.05, 0.10, Discount.NONE));
+        baseProducts.add(new Product("lemonade", 2.0, 4.0, Discount.NONE));
+        baseProducts.add(new Product("egg", 0.5, 1.0, Discount.NONE));
 
         List<String> productNames = new ArrayList<>();
         for (Product product : baseProducts) {
@@ -52,7 +52,7 @@ public class Presenter {
             }
         }
 
-        return new Product("", 0.0, 0.0);
+        return new Product("", 0.0, 0.0, Discount.NONE);
     }
 
     public void sellStock(String productName, int sellQuantity) {

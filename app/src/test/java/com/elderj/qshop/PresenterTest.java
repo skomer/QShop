@@ -102,4 +102,6 @@ public class PresenterTest {
         verify(shop, times(0)).setStock(any(String.class), any(Integer.class));
     }
 
+
+
 }
