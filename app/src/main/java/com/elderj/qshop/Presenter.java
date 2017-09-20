@@ -42,10 +42,9 @@ public class Presenter {
             shop.setBalance(newBalance);
             view.showShopStock(shop);
             view.showShopBalance(Double.toString(newBalance));
-            view.displayMessage(
-                    "Product ordered.\n" +
-                            "Stock and balance updated."
-            );
+            view.displayMessage("Product ordered.\nStock and balance updated.");
+        } else {
+            view.displayMessage("Product not ordered.\nBalance too low.");
         }
     }
 
@@ -74,19 +73,18 @@ public class Presenter {
             shop.setStock(product.name, newStockQuantity);
             view.showShopStock(shop);
             view.showShopBalance(Double.toString(newBalance));
+            view.displayMessage("Product sold.\nStock and balance updated.");
+        } else {
+            view.displayMessage("Product not sold.\nInsufficient stock.");
         }
     }
 
     public void orderOneButtonTapped(Product product) {
         buyStock(product.name, 1);
-
-        view.displayMessage("Product ordered: " + product.name);
     }
 
     public void orderTenButtonTapped(Product product) {
         buyStock(product.name, 10);
-
-        view.displayMessage("Product ordered: " + product.name);
     }
 
 }

@@ -67,7 +67,6 @@ public class PresenterTest {
 
         when(shop.getBalance()).thenReturn(0.0);
         presenter.buyStock("egg", 1000);
-        presenter.buyStock("matches", 1);
 
         verify(shop, times(0)).setStock(any(String.class), any(Integer.class));
         verify(shop, times(0)).setBalance(any(double.class));
