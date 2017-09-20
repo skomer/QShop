@@ -60,4 +60,14 @@ public class DiscounterTest {
         assertThat(90.0, is(equalTo(actualBuyCost)));
     }
 
+    @Test
+    public void discounter_applies_ten_percent_discount_when_quantity_is_not_multiple_of_ten() {
+        discounter = new Discounter();
+        Product product = new Product("", 1.0, 2.0, Discount.BUYTENSAVETENPERCENT);
+
+        double actualBuyCost = discounter.getBuyCost(product, 103);
+
+        assertThat(93.0, is(equalTo(actualBuyCost)));
+    }
+
 }
