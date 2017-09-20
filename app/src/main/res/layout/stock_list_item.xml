@@ -25,4 +25,11 @@
         android:layout_alignParentEnd="true"
         android:id="@+id/product_quantity" />
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/product_quantity"
+        android:text="ORDER MORE OF THIS ITEM"
+        android:id="@+id/order_button" />
+
 </RelativeLayout>

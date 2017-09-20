@@ -73,4 +73,8 @@ public class Presenter {
         }
     }
 
+    public void orderStockButtonTapped(Product product) {
+        view.displayMessage("Product ordered: " + product.name);
+    }
+
 }

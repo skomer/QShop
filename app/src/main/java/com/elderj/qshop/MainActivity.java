@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -43,7 +44,6 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
         stock.put("egg", 100);
         stock.put("apple", 100);
 
-
         presenter = new Presenter(this, new Shop(stock, 1000.0));
     }
 
@@ -65,6 +65,19 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
 
     public void showShopBalance(String shopBalance) {
         balance.setText(shopBalance);
+    }
+
+    public void orderStockButtonTapped(Product product) {
+        presenter.orderStockButtonTapped(product);
+    }
+
+    public void displayMessage(final String message) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
 }
