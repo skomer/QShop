@@ -27,14 +27,15 @@ public class Presenter {
 
         double buyCost = discounter.getBuyCost(product, quantity);
         double balance = shop.getBalance();
-        double newBalance = balance - buyCost;
+        double newBalance = Math.round(balance - buyCost);
 
         if (newBalance > 0) {
+            double discountSaving = Math.round((product.buyPrice * quantity) - buyCost);
             shop.setStock(product.name, quantity);
             shop.setBalance(newBalance);
             view.showShopStock(shop);
             view.showShopBalance(Double.toString(newBalance));
-            view.displayMessage("Product ordered.\nStock and balance updated.");
+            view.displayMessage("Product ordered.\nStock and balance updated.\nYou saved " + discountSaving + " in discounts!");
         } else {
             view.displayMessage("Product not ordered.\nBalance too low.");
         }

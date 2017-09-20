@@ -43,10 +43,10 @@ public class Discounter implements Discounting {
                     int intNearestLowerTen = nearestLowerTen.intValue();
 
                     int unDiscountedQuantity = quantity - intNearestLowerTen;
-                    discountAmount = intNearestLowerTen * product.buyPrice * 0.9;
+                    double discountedAmount = intNearestLowerTen * product.buyPrice * 0.9;
                     double unDiscountedAmount = unDiscountedQuantity * product.buyPrice;
 
-                    return discountAmount + unDiscountedAmount;
+                    return discountedAmount + unDiscountedAmount;
                 }
         }
 
