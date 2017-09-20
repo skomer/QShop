@@ -28,12 +28,14 @@ public class StockAdapter extends ArrayAdapter<Product> implements View.OnClickL
         TextView productName = (TextView) convertView.findViewById(R.id.product_name);
         TextView productSellDiscount = (TextView) convertView.findViewById(R.id.product_sell_discount);
         TextView productQuantity = (TextView) convertView.findViewById(R.id.product_quantity);
-        Button orderButton = (Button) convertView.findViewById(R.id.order_button);
+        Button orderOneButton = (Button) convertView.findViewById(R.id.order_one_button);
+        Button orderTenButton = (Button) convertView.findViewById(R.id.order_ten_button);
 
         productName.setText(product.name);
         productSellDiscount.setText((product.discount).toString());
         productQuantity.setText("9876");
-        orderButton.setOnClickListener(this);
+        orderOneButton.setOnClickListener(this);
+        orderTenButton.setOnClickListener(this);
 
         return convertView;
     }
@@ -41,7 +43,15 @@ public class StockAdapter extends ArrayAdapter<Product> implements View.OnClickL
     @Override
     public void onClick(View view) {
         Context context = view.getContext();
-        ((MainActivityView) context).orderStockButtonTapped(product);
+
+        switch (view.getId()) {
+            case R.id.order_one_button:
+                ((MainActivityView) context).orderOneButtonTapped(product);
+                break;
+            case R.id.order_ten_button:
+                ((MainActivityView) context).orderTenButtonTapped(product);
+                break;
+        }
     }
 
 }

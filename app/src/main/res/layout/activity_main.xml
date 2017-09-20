@@ -21,7 +21,6 @@
         android:layout_below="@id/expandable"
         android:id="@+id/hide_show" />
 
-
     <View
         android:layout_width="fill_parent"
         android:layout_height="1dip"
@@ -77,9 +76,5 @@
         android:layout_margin="10dp"
         android:layout_below="@id/product"
         android:id="@+id/stock_listview" />
-
-
-
-
 
 </RelativeLayout>

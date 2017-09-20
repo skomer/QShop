@@ -13,8 +13,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="Product sell discount"
-        android:layout_centerInParent="true"
+        android:text="Sell discount"
+        android:layout_centerHorizontal="true"
         android:id="@+id/product_sell_discount" />
 
     <TextView
@@ -25,11 +25,37 @@
         android:layout_alignParentEnd="true"
         android:id="@+id/product_quantity" />
 
-    <Button
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/product_quantity"
-        android:text="ORDER MORE OF THIS ITEM"
-        android:id="@+id/order_button" />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/product_name"
+        android:id="@+id/buttons_layout">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="0.50"
+            android:text="ORDER ONE"
+            android:id="@+id/order_one_button" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="0.50"
+            android:layout_toRightOf="@id/order_one_button"
+            android:text="ORDER TEN"
+            android:id="@+id/order_ten_button" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
+        android:background="#000000"
+        android:layout_below="@id/buttons_layout"
+        android:id="@+id/line_2" />
 
 </RelativeLayout>

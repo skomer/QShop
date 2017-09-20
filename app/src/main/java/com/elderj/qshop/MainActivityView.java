@@ -5,7 +5,8 @@ public interface MainActivityView {
 
     void showShopBalance(String shopBalance);
     void showShopStock(Shop shop);
-    void orderStockButtonTapped(Product product);
+    void orderOneButtonTapped(Product product);
+    void orderTenButtonTapped(Product product);
     void displayMessage(String message);
 
 }

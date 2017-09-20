@@ -67,8 +67,12 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
         balance.setText(shopBalance);
     }
 
-    public void orderStockButtonTapped(Product product) {
-        presenter.orderStockButtonTapped(product);
+    public void orderOneButtonTapped(Product product) {
+        presenter.orderOneButtonTapped(product);
+    }
+
+    public void orderTenButtonTapped(Product product) {
+        presenter.orderTenButtonTapped(product);
     }
 
     public void displayMessage(final String message) {

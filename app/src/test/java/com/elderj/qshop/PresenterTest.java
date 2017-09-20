@@ -7,7 +7,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.anyMapOf;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -103,12 +102,12 @@ public class PresenterTest {
     }
 
     @Test
-    public void on_orderStockButtonTapped_presenter_buys_stock() {
+    public void on_orderOneButtonTapped_presenter_buys_stock() {
         Product product = new Product("product", 0, 0, Discount.NONE);
 
         presenter.onResume();
         when(shop.getBalance()).thenReturn(1000.00);
-        presenter.orderStockButtonTapped(product);
+        presenter.orderOneButtonTapped(product);
 
         verify(shop).setStock(any(String.class), any(Integer.class));
         verify(shop).setBalance(any(double.class));
