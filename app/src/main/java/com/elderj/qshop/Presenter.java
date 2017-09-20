@@ -73,7 +73,15 @@ public class Presenter {
         }
     }
 
-    public void orderStockButtonTapped(Product product) {
+    public void orderOneButtonTapped(Product product) {
+        buyStock(product.name, 1);
+
+        view.displayMessage("Product ordered: " + product.name);
+    }
+
+    public void orderTenButtonTapped(Product product) {
+        buyStock(product.name, 10);
+
         view.displayMessage("Product ordered: " + product.name);
     }
 
