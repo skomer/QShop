@@ -43,7 +43,7 @@ public class DiscounterTest {
     @Test
     public void discounter_applies_buying_three_for_two_discount() {
         discounter = new Discounter();
-        Product product = new Product("", 1.0, 2.0, Discount.THREEFORTHEPRICEOFTWO);
+        Product product = new Product("", 1.0, 2.0, Discount.THREEFORTWO);
 
         double actualBuyCost = discounter.getBuyCost(product, 7);
 
