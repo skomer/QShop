@@ -55,6 +55,7 @@ public class PresenterTest {
     public void presenter_can_buy_in_stock_for_the_shop() {
         presenter.onResume();
         when(shop.getBalance()).thenReturn(1000.00);
+        when(discounter.getBuyCost(any(Product.class), any(Integer.class))).thenReturn(1.0);
         presenter.buyStock("egg", 1);
 
         verify(shop).setStock(any(String.class), any(Integer.class));
@@ -80,6 +81,7 @@ public class PresenterTest {
         presenter.onResume();
 
         when(shop.getBalance()).thenReturn(0.0);
+        when(discounter.getBuyCost(any(Product.class), any(Integer.class))).thenReturn(1.0);
         presenter.buyStock("egg", 1000);
 
         verify(shop, times(0)).setStock(any(String.class), any(Integer.class));
@@ -128,6 +130,7 @@ public class PresenterTest {
 
         presenter.onResume();
         when(shop.getBalance()).thenReturn(1000.00);
+        when(discounter.getBuyCost(any(Product.class), any(Integer.class))).thenReturn(1.0);
         presenter.orderOneButtonTapped(product);
 
         verify(shop).setStock(any(String.class), any(Integer.class));
@@ -142,7 +145,7 @@ public class PresenterTest {
         when(shop.getBalance()).thenReturn(10.00);
         presenter.buyStock("juice", 10);
 
-        verify(discounter).applyDiscount(any(Product.class), any(Integer.class));
+        verify(discounter).getBuyCost(any(Product.class), any(Integer.class));
     }
 
 }

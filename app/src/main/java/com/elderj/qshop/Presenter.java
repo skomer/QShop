@@ -24,7 +24,8 @@ public class Presenter {
 
     public void buyStock(String productName, int quantity) {
         Product product = getProduct(productName);
-        double buyCost = product.buyPrice * quantity;
+
+        double buyCost = discounter.getBuyCost(product, quantity);
         double balance = shop.getBalance();
         double newBalance = balance - buyCost;
 
