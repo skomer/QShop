@@ -65,9 +65,9 @@ public class DiscounterTest {
         discounter = new Discounter();
         Product product = new Product("", 1.0, 2.0, Discount.BUYTENSAVETENPERCENT);
 
-        double actualBuyCost = discounter.getBuyCost(product, 103);
+        double actualBuyCost = discounter.getBuyCost(product, 109);
 
-        assertThat(93.0, is(equalTo(actualBuyCost)));
+        assertThat(99.0, is(equalTo(actualBuyCost)));
     }
 
 }

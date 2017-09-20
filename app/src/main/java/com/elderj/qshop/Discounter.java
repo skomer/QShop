@@ -4,23 +4,24 @@ public class Discounter implements Discounting {
 
     public Discounter() {}
 
-
-
     public double getBuyCost(Product product, int quantity) {
+        double discountAmount;
         double priceBeforeDiscount = product.buyPrice * quantity;
 
         switch (product.discount) {
             case NONE:
                 return priceBeforeDiscount;
+
             case BOGOF:
                 if (quantity % 2 == 0) {
                     return ((product.buyPrice * quantity) / 2);
                 } else {
                     int discountQuantity = (quantity - 1) / 2;
-                    double discountAmount = discountQuantity * product.buyPrice;
+                    discountAmount = discountQuantity * product.buyPrice;
 
                     return priceBeforeDiscount - discountAmount;
                 }
+
             case THREEFORTWO:
                 int discountQuantity;
                 if  (quantity % 3 == 0) {
@@ -30,19 +31,26 @@ public class Discounter implements Discounting {
                 } else {
                     discountQuantity = (quantity - 2) / 3;
                 }
-                double discountAmount = product.buyPrice * discountQuantity;
+                discountAmount = product.buyPrice * discountQuantity;
+
                 return priceBeforeDiscount - discountAmount;
+
             case BUYTENSAVETENPERCENT:
-//                int discountQuantity;
                 if (quantity % 10 == 0) {
                     return priceBeforeDiscount * 0.9;
+                } else {
+                    Double nearestLowerTen = Math.round((quantity - 5)/ 10.0) * 10.0;
+                    int intNearestLowerTen = nearestLowerTen.intValue();
+
+                    int unDiscountedQuantity = quantity - intNearestLowerTen;
+                    discountAmount = intNearestLowerTen * product.buyPrice * 0.9;
+                    double unDiscountedAmount = unDiscountedQuantity * product.buyPrice;
+
+                    return discountAmount + unDiscountedAmount;
                 }
-
-
         }
 
-
-        return 0.0;
+        return priceBeforeDiscount;
     }
 
 }
