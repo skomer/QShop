@@ -3,11 +3,22 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="expanding textview"
         android:layout_margin="10dp"
-        android:id="@+id/list_product" />
+        android:clickable="true"
+        android:onClick="toggle_contents"
+        android:id="@+id/expandable" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="content to hide/show"
+        android:id="@+id/hide_show" />
+
 
     <View
         android:layout_width="fill_parent"
