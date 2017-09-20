@@ -16,16 +16,16 @@ public class Presenter {
     }
 
     public void onResume() {
-        baseProducts = new ArrayList<>();
-        baseProducts.add(new Product("potatoes", 1.0, 2.0, Discount.NONE));
-        baseProducts.add(new Product("peas", 0.05, 0.10, Discount.NONE));
-        baseProducts.add(new Product("lemonade", 2.0, 4.0, Discount.NONE));
-        baseProducts.add(new Product("egg", 0.5, 1.0, Discount.NONE));
-
-        List<String> productNames = new ArrayList<>();
-        for (Product product : baseProducts) {
-            productNames.add(product.name);
-        }
+//        baseProducts = new ArrayList<>();
+//        baseProducts.add(new Product("potatoes", 1.0, 2.0, Discount.NONE));
+//        baseProducts.add(new Product("peas", 0.05, 0.10, Discount.NONE));
+//        baseProducts.add(new Product("lemonade", 2.0, 4.0, Discount.NONE));
+//        baseProducts.add(new Product("egg", 0.5, 1.0, Discount.NONE));
+//
+//        List<String> productNames = new ArrayList<>();
+//        for (Product product : baseProducts) {
+//            productNames.add(product.name);
+//        }
 
         view.showShopBalance(Double.toString(shop.getBalance()));
         view.showShopStock(shop);

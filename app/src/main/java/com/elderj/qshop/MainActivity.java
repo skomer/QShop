@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
         products.add(new Product("egg", 1.0, 2.0, Discount.NONE));
         products.add(new Product("pineapple", 3.0, 5.5, Discount.TWOFORONE));
         products.add(new Product("rice", 1.5, 3.0, Discount.NONE));
-        products.add(new Product("juice", 0.7, 3.0, Discount.BOGOF));
+        products.add(new Product("juice", 0.7, 3.0, Discount.BUYTENSAVETENPERCENT));
 
         StockAdapter adapter = new StockAdapter(this, products);
         stockListView.setAdapter(adapter);

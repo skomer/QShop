@@ -52,6 +52,9 @@ public class PresenterTest {
     }
 
     @Test
+    public void presenter_buys_stock_at_buy_price() {}
+
+    @Test
     public void if_product_not_in_product_list_presenter_does_not_buy_product() {
         presenter.onResume();
         presenter.buyStock("matches", 1);
@@ -90,6 +93,9 @@ public class PresenterTest {
     }
 
     @Test
+    public void presenter_sells_stock_at_sell_price() {}
+
+    @Test
     public void if_stock_quantity_too_low_presenter_does_not_sell_stock() {
         presenter.onResume();
 
@@ -118,5 +124,14 @@ public class PresenterTest {
         verify(view).displayMessage(any(String.class));
     }
 
+    @Test
+    public void when_buying_presenter_applies_discounts_before_setting_new_balance() {
+        presenter.onResume();
+
+        when(shop.getBalance()).thenReturn(10.00);
+        presenter.buyStock("juice", 10);
+
+        verify(discounter).applyDiscount();
+    }
 
 }
