@@ -42,6 +42,10 @@ public class Presenter {
             shop.setBalance(newBalance);
             view.showShopStock(shop);
             view.showShopBalance(Double.toString(newBalance));
+            view.displayMessage(
+                    "Product ordered.\n" +
+                            "Stock and balance updated."
+            );
         }
     }
 

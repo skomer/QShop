@@ -48,6 +48,7 @@ public class PresenterTest {
 
         verify(shop).setStock(any(String.class), any(Integer.class));
         verify(shop).setBalance(any(double.class));
+        verify(view).displayMessage(any(String.class));
     }
 
     @Test
@@ -57,6 +58,7 @@ public class PresenterTest {
 
         verify(shop, times(0)).setStock(any(String.class), any(Integer.class));
         verify(shop, times(0)).setBalance(any(double.class));
+        verify(view).displayMessage(any(String.class));
     }
 
     @Test
@@ -69,6 +71,7 @@ public class PresenterTest {
 
         verify(shop, times(0)).setStock(any(String.class), any(Integer.class));
         verify(shop, times(0)).setBalance(any(double.class));
+        verify(view).displayMessage(any(String.class));
     }
 
     @Test
@@ -84,6 +87,7 @@ public class PresenterTest {
 
         verify(shop).setBalance(any(double.class));
         verify(shop).setStock(any(String.class), any(Integer.class));
+        verify(view).displayMessage(any(String.class));
     }
 
     @Test
@@ -99,6 +103,7 @@ public class PresenterTest {
 
         verify(shop, times(0)).setBalance(any(double.class));
         verify(shop, times(0)).setStock(any(String.class), any(Integer.class));
+        verify(view).displayMessage(any(String.class));
     }
 
     @Test
@@ -111,6 +116,7 @@ public class PresenterTest {
 
         verify(shop).setStock(any(String.class), any(Integer.class));
         verify(shop).setBalance(any(double.class));
+        verify(view).displayMessage(any(String.class));
     }
 
 
