@@ -38,11 +38,11 @@ public class PresenterTest {
         shop = mock(Shop.class);
         discounter = mock(Discounting.class);
 
-        egg = new Product("egg", 1.0, 2.0, Discount.NONE);
-        apple = new Product("apple", 0.5, 1.1, Discount.NONE);
-        pineapple = new Product("pineapple", 3.0, 5.5, Discount.THREEFORTWO);
-        rice = new Product("rice", 1.5, 3.0, Discount.NONE);
-        juice = new Product("juice", 0.7, 3.0, Discount.BUYTENSAVETENPERCENT);
+        egg = new Product("Egg", 1.0, 2.0, Discount.BOGOF);
+        apple = new Product("Apple", 0.5, 1.1, Discount.NONE);
+        pineapple = new Product("Pineapple", 3.0, 5.5, Discount.THREEFORTWO);
+        rice = new Product("Rice", 1.5, 3.0, Discount.NONE);
+        juice = new Product("Juice", 0.7, 3.0, Discount.BUYTENSAVETENPERCENT);
 
         presenter = new Presenter(view, shop, discounter);
     }
@@ -105,7 +105,7 @@ public class PresenterTest {
         presenter.onResume();
 
         Map<String, Integer> stock = new HashMap();
-        stock.put("egg", 100);
+        stock.put("Egg", 100);
 
         when(shop.getStock()).thenReturn(stock);
         when(shop.getBalance()).thenReturn(1000.00);
@@ -124,7 +124,7 @@ public class PresenterTest {
         presenter.onResume();
 
         Map<String, Integer> stock = new HashMap();
-        stock.put("egg", 1);
+        stock.put("Egg", 1);
 
         when(shop.getStock()).thenReturn(stock);
         when(shop.getBalance()).thenReturn(1000.00);

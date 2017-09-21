@@ -32,18 +32,17 @@ public class CatalogueAdapter extends ArrayAdapter<Product> {
 
         TextView productName = (TextView) convertView.findViewById(R.id.product_name);
         TextView productSellDiscount = (TextView) convertView.findViewById(R.id.product_discount);
-        TextView productQuantity = (TextView) convertView.findViewById(R.id.product_quantity);
+        TextView productPrice = (TextView) convertView.findViewById(R.id.product_price);
         Button orderOneButton = (Button) convertView.findViewById(R.id.order_one_button);
         Button orderTenButton = (Button) convertView.findViewById(R.id.order_ten_button);
 
         productName.setText(product.name);
         productSellDiscount.setText((product.discount).toString());
-        productQuantity.setText("9876");
+        productPrice.setText(Double.toString(product.buyPrice));
         orderOneButton.setOnClickListener(onClickListener);
         orderTenButton.setOnClickListener(onClickListener);
 
         return convertView;
     }
-
 
 }

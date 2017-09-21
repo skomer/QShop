@@ -27,11 +27,11 @@ public class Presenter {
         view.showShopStock(shop);
 
         productCatalogue = new ArrayList<>();
-        productCatalogue.add(new Product("egg", 1.0, 2.0, Discount.NONE));
-        productCatalogue.add(new Product("apple", 0.5, 1.1, Discount.NONE));
-        productCatalogue.add(new Product("pineapple", 3.0, 5.5, Discount.THREEFORTWO));
-        productCatalogue.add(new Product("rice", 1.5, 3.0, Discount.NONE));
-        productCatalogue.add(new Product("juice", 0.7, 3.0, Discount.BUYTENSAVETENPERCENT));
+        productCatalogue.add(new Product("Egg", 1.0, 2.0, Discount.BOGOF));
+        productCatalogue.add(new Product("Apple", 0.5, 1.1, Discount.NONE));
+        productCatalogue.add(new Product("Pineapple", 3.0, 5.5, Discount.THREEFORTWO));
+        productCatalogue.add(new Product("Rice", 1.5, 3.0, Discount.NONE));
+        productCatalogue.add(new Product("Juice", 0.7, 3.0, Discount.BUYTENSAVETENPERCENT));
 
         view.showCatalogueItems(productCatalogue);
     }
@@ -40,7 +40,7 @@ public class Presenter {
         boolean isInCatalogue = checkCatalogue(product);
 
         if (!isInCatalogue) {
-            view.displayMessage("Product not ordered.\nNot available to order.");
+            view.displayMessage(product.name + " not ordered.\nNot available to order.");
         } else {
             double buyCost = discounter.getBuyCost(product, quantity);
             double balance = shop.getBalance();
@@ -57,9 +57,9 @@ public class Presenter {
                 view.showShopStock(shop);
                 String stringBalance = String.format("%.2f", newBalance);
                 view.showShopBalance(stringBalance);
-                view.displayMessage("Product ordered.\nStock and balance updated.\nYou saved " + stringSaving + " in discounts!");
+                view.displayMessage(product.name + " ordered.\nStock and balance updated.\nYou saved " + stringSaving + " in discounts!");
             } else {
-                view.displayMessage("Product not ordered.\nBalance too low.");
+                view.displayMessage(product.name + " not ordered.\nBalance too low.");
             }
         }
     }
@@ -81,9 +81,9 @@ public class Presenter {
             shop.setStock(product.name, newStockQuantity);
             view.showShopStock(shop);
             view.showShopBalance(Double.toString(newBalance));
-            view.displayMessage("Product sold.\nStock and balance updated.");
+            view.displayMessage(product.name + " sold.\nStock and balance updated.");
         } else {
-            view.displayMessage("Product not sold.\nInsufficient stock.");
+            view.displayMessage(product.name + " not sold.\nInsufficient stock.");
         }
     }
 

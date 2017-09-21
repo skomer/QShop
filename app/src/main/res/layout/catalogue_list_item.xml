@@ -6,24 +6,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="Product name"
+        android:text="@string/product"
         android:id="@+id/product_name" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="Sell discount"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/product_discount" />
+        android:text="@string/price_per_unit"
+        android:layout_toRightOf="@id/product_name"
+        android:id="@+id/product_price" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="Product quantity"
+        android:text="@string/discount_applied"
         android:layout_alignParentEnd="true"
-        android:id="@+id/product_quantity" />
+        android:id="@+id/product_discount" />
 
     <LinearLayout
         android:layout_width="match_parent"

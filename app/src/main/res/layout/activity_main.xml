@@ -7,74 +7,80 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="expanding textview"
         android:layout_margin="10dp"
-        android:clickable="true"
-        android:onClick="toggle_contents"
-        android:id="@+id/expandable" />
+        android:text="@string/shop"
+        android:id="@+id/shop_name" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="content to hide/show"
-        android:layout_below="@id/expandable"
-        android:id="@+id/hide_show" />
+        android:text="@string/balance"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/shop_balance_title" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_below="@id/shop_balance_title"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/shop_balance" />
 
     <View
         android:layout_width="fill_parent"
         android:layout_height="1dip"
         android:background="#000000"
-        android:layout_below="@id/hide_show"
+        android:layout_below="@id/shop_balance"
         android:id="@+id/line_1" />
-    
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Shop"
+        android:text="@string/product_catalogue_tap_to_hide_show"
         android:layout_margin="10dp"
         android:layout_below="@id/line_1"
-        android:id="@+id/shop_title" />
+        android:clickable="true"
+        android:onClick="toggle_contents"
+        android:id="@+id/expandable" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Balance"
-        android:layout_margin="10dp"
-        android:layout_below="@id/shop_title"
-        android:id="@+id/shop_balance" />
 
-    <TextView
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="Product"
-        android:layout_below="@id/shop_balance"
-        android:id="@+id/product" />
+        android:layout_below="@id/expandable"
+        android:id="@+id/catalogue_layout" >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="Discount applied"
-        android:layout_below="@id/shop_balance"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/product_discount" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="@string/product"
+            android:id="@+id/product" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="Quantity"
-        android:layout_below="@id/shop_balance"
-        android:layout_alignParentEnd="true"
-        android:id="@+id/quantity" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="@string/price_per_unit"
+            android:layout_toRightOf="@id/product"
+            android:id="@+id/quantity" />
 
-    <ListView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:layout_below="@id/product"
-        android:id="@+id/catalogue_listview" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="@string/discount_applied"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/product_discount" />
+
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_below="@id/product"
+            android:id="@+id/catalogue_listview" />
+
+    </RelativeLayout>
 
 </RelativeLayout>

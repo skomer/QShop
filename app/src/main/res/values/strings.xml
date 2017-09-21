@@ -2,4 +2,10 @@
     <string name="app_name">QShop</string>
     <string name="order_ten">ORDER TEN</string>
     <string name="order_one">ORDER ONE</string>
+    <string name="shop">SHOP</string>
+    <string name="balance">BALANCE:</string>
+    <string name="product_catalogue_tap_to_hide_show">PRODUCT CATALOGUE (tap to hide/show)</string>
+    <string name="product">Product</string>
+    <string name="price_per_unit">Price per unit</string>
+    <string name="discount_applied">Discount applied</string>
 </resources>

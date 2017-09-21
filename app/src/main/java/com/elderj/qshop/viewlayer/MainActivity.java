@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,26 +22,26 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity implements MainActivityView, View.OnClickListener {
 
     Presenter presenter;
-    private TextView balance;
+    private TextView shopBalance;
     private TextView expandable;
+    private RelativeLayout catalogueLayout;
     private ListView catalogueListView;
-    private TextView hideShow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        balance = (TextView) findViewById(R.id.shop_balance);
+        shopBalance = (TextView) findViewById(R.id.shop_balance);
         expandable = (TextView) findViewById(R.id.expandable);
+        catalogueLayout = (RelativeLayout) findViewById(R.id.catalogue_layout);
+        catalogueLayout.setVisibility(View.GONE);
+
         catalogueListView = (ListView) findViewById(R.id.catalogue_listview);
 
-        hideShow = (TextView) findViewById(R.id.hide_show);
-        hideShow.setVisibility(View.GONE);
-
         Map<String, Integer> stock = new HashMap();
-        stock.put("egg", 100);
-        stock.put("apple", 100);
+        stock.put("Egg", 100);
+        stock.put("Apple", 100);
 
         presenter = new Presenter(this, new Shop(stock, 1000.0), new Discounter());
     }
@@ -52,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityView,
     }
 
     public void toggle_contents(View v){
-        hideShow.setVisibility( hideShow.isShown()
+        catalogueLayout.setVisibility( catalogueLayout.isShown()
                 ? View.GONE
                 : View.VISIBLE );
     }
@@ -65,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityView,
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                balance.setText(shopBalance);
+                MainActivity.this.shopBalance.setText(shopBalance);
             }
         });
     }
