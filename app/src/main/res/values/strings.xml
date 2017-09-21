@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">QShop</string>
+    <string name="order_ten">ORDER TEN</string>
+    <string name="order_one">ORDER ONE</string>
 </resources>

@@ -5,21 +5,27 @@ import java.util.Map;
 
 public class Presenter {
 
-    MainActivityView view;
-    Shop shop;
-    ArrayList<Product> productCatalogue;
-    Discounting discounter;
+    private MainActivityView view;
+    private Shop shop;
+    private ArrayList<Product> productCatalogue;
+    private Discounting discounter;
 
-    public Presenter(MainActivityView view, Shop shop, ArrayList<Product> productCatalogue, Discounting discounter) {
+    public Presenter(MainActivityView view, Shop shop, Discounting discounter) {
         this.view = view;
         this.shop = shop;
-        this.productCatalogue = productCatalogue;
         this.discounter = discounter;
     }
 
     public void onResume() {
         view.showShopBalance(Double.toString(shop.getBalance()));
         view.showShopStock(shop);
+
+        productCatalogue = new ArrayList<>();
+        productCatalogue.add(new Product("egg", 1.0, 2.0, Discount.NONE));
+        productCatalogue.add(new Product("apple", 0.5, 1.1, Discount.NONE));
+        productCatalogue.add(new Product("pineapple", 3.0, 5.5, Discount.THREEFORTWO));
+        productCatalogue.add(new Product("rice", 1.5, 3.0, Discount.NONE));
+        productCatalogue.add(new Product("juice", 0.7, 3.0, Discount.BUYTENSAVETENPERCENT));
 
         view.showCatalogueItems(productCatalogue);
     }
@@ -36,15 +42,16 @@ public class Presenter {
             double newBalance = balance - buyCost;
 
             if (newBalance > 0) {
-                double discountSaving = Math.round((product.buyPrice * quantity) - buyCost);
-                shop.setStock(product.name, quantity);
+                double discountSaving = (product.buyPrice * quantity) - buyCost;
+                String stringSaving = String.format("%.2f", discountSaving);
 
-                String result = String.format("%.2f", newBalance);
+                shop.setStock(product.name, quantity);
 
                 shop.setBalance(newBalance);
                 view.showShopStock(shop);
-                view.showShopBalance(result);
-                view.displayMessage("Product ordered.\nStock and balance updated.\nYou saved " + discountSaving + " in discounts!");
+                String stringBalance = String.format("%.2f", newBalance);
+                view.showShopBalance(stringBalance);
+                view.displayMessage("Product ordered.\nStock and balance updated.\nYou saved " + stringSaving + " in discounts!");
             } else {
                 view.displayMessage("Product not ordered.\nBalance too low.");
             }
@@ -53,20 +60,9 @@ public class Presenter {
 
     private boolean checkCatalogue(Product product) {
         return productCatalogue.contains(product);
-
-
-//        for (Product product : productCatalogue) {
-//            if (product.name.equals(productName)) {
-//                return product;
-//            }
-//        }
-
-//        return new Product("", 0.0, 0.0, Discount.NONE);
     }
 
     public void sellStock(Product product, int sellQuantity) {
-//        Product product = checkCatalogue(product);
-
         double sellPrice = product.sellPrice * sellQuantity;
         double newBalance = shop.getBalance() + sellPrice;
 
@@ -85,12 +81,14 @@ public class Presenter {
         }
     }
 
-    public void orderOneButtonTapped(Product product) {
-        buyStock(product, 1);
+    public void orderOneButtonTapped(int position) {
+        Product selectedProduct = productCatalogue.get(position);
+        buyStock(selectedProduct, 1);
     }
 
-    public void orderTenButtonTapped(Product product) {
-        buyStock(product, 10);
+    public void orderTenButtonTapped(int position) {
+        Product selectedProduct = productCatalogue.get(position);
+        buyStock(selectedProduct, 10);
     }
 
 }

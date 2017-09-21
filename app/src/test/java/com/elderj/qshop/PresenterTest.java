@@ -21,11 +21,11 @@ public class PresenterTest {
     private Discounting discounter;
     private Presenter presenter;
 
-    Product egg;
-    Product apple;
-    Product pineapple;
-    Product rice;
-    Product juice;
+    private Product egg;
+    private Product apple;
+    private Product pineapple;
+    private Product rice;
+    private Product juice;
 
     @Before
     public void setUp() {
@@ -33,21 +33,13 @@ public class PresenterTest {
         shop = mock(Shop.class);
         discounter = mock(Discounting.class);
 
-        ArrayList<Product> productCatalogue = new ArrayList<>();
-
         egg = new Product("egg", 1.0, 2.0, Discount.NONE);
         apple = new Product("apple", 0.5, 1.1, Discount.NONE);
         pineapple = new Product("pineapple", 3.0, 5.5, Discount.THREEFORTWO);
         rice = new Product("rice", 1.5, 3.0, Discount.NONE);
         juice = new Product("juice", 0.7, 3.0, Discount.BUYTENSAVETENPERCENT);
 
-        productCatalogue.add(egg);
-        productCatalogue.add(apple);
-        productCatalogue.add(pineapple);
-        productCatalogue.add(rice);
-        productCatalogue.add(juice);
-
-        presenter = new Presenter(view, shop, productCatalogue, discounter);
+        presenter = new Presenter(view, shop, discounter);
     }
 
     @Test

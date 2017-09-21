@@ -3,6 +3,7 @@ package com.elderj.qshop;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -11,7 +12,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MainActivity extends AppCompatActivity implements MainActivityView {
+public class MainActivity extends AppCompatActivity implements MainActivityView, View.OnClickListener {
 
     Presenter presenter;
     private TextView balance;
@@ -31,22 +32,11 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
         hideShow = (TextView) findViewById(R.id.hide_show);
         hideShow.setVisibility(View.GONE);
 
-        ArrayList<Product> productCatalogue = new ArrayList<>();
-        productCatalogue.add(new Product("egg", 1.0, 2.0, Discount.NONE));
-        productCatalogue.add(new Product("apple", 0.5, 1.1, Discount.NONE));
-        productCatalogue.add(new Product("pineapple", 3.0, 5.5, Discount.THREEFORTWO));
-        productCatalogue.add(new Product("rice", 1.5, 3.0, Discount.NONE));
-        productCatalogue.add(new Product("juice", 0.7, 3.0, Discount.BUYTENSAVETENPERCENT));
-
         Map<String, Integer> stock = new HashMap();
         stock.put("egg", 100);
         stock.put("apple", 100);
 
-        CatalogueAdapter adapter = new CatalogueAdapter(this, productCatalogue);
-        catalogueListView.setAdapter(adapter);
-
-
-        presenter = new Presenter(this, new Shop(stock, 1000.0), productCatalogue, new Discounter());
+        presenter = new Presenter(this, new Shop(stock, 1000.0), new Discounter());
     }
 
     @Override
@@ -65,27 +55,39 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
         // give view arraylist of products, on which to set the adapter
     }
 
-    public void showShopBalance(String shopBalance) {
-        balance.setText(shopBalance);
+    public void showShopBalance(final String shopBalance) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                balance.setText(shopBalance);
+            }
+        });
     }
 
-    public void showCatalogueItems() {
-        
+    public void showCatalogueItems(ArrayList<Product> productCatalogue) {
+        CatalogueAdapter adapter = new CatalogueAdapter(this, productCatalogue, this);
+        catalogueListView.setAdapter(adapter);
     }
 
-    public void orderOneButtonTapped(Product product) {
-        presenter.orderOneButtonTapped(product);
-    }
-
-    public void orderTenButtonTapped(Product product) {
-        presenter.orderTenButtonTapped(product);
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.order_one_button:
+                final int positionOne = catalogueListView.getPositionForView((LinearLayout)view.getParent());
+                presenter.orderOneButtonTapped(positionOne);
+                break;
+            case R.id.order_ten_button:
+                final int positionTen = catalogueListView.getPositionForView((LinearLayout)view.getParent());
+                presenter.orderTenButtonTapped(positionTen);
+                break;
+        }
     }
 
     public void displayMessage(final String message) {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
             }
         });
     }

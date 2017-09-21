@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:layout_weight="0.50"
-            android:text="ORDER ONE"
+            android:text="@string/order_one"
             android:id="@+id/order_one_button" />
 
         <Button
@@ -45,8 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:layout_weight="0.50"
-            android:layout_toRightOf="@id/order_one_button"
-            android:text="ORDER TEN"
+            android:text="@string/order_ten"
             android:id="@+id/order_ten_button" />
 
     </LinearLayout>

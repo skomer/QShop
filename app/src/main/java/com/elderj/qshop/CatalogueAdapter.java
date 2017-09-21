@@ -10,12 +10,14 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class CatalogueAdapter extends ArrayAdapter<Product> implements View.OnClickListener {
+public class CatalogueAdapter extends ArrayAdapter<Product> {
 
     Product product;
+    View.OnClickListener onClickListener;
 
-    public CatalogueAdapter(Context context, ArrayList<Product> productCatalogue) {
+    public CatalogueAdapter(Context context, ArrayList<Product> productCatalogue, View.OnClickListener onClickListener) {
         super(context, 0, productCatalogue);
+        this.onClickListener = onClickListener;
     }
 
     @Override
@@ -34,24 +36,11 @@ public class CatalogueAdapter extends ArrayAdapter<Product> implements View.OnCl
         productName.setText(product.name);
         productSellDiscount.setText((product.discount).toString());
         productQuantity.setText("9876");
-        orderOneButton.setOnClickListener(this);
-        orderTenButton.setOnClickListener(this);
+        orderOneButton.setOnClickListener(onClickListener);
+        orderTenButton.setOnClickListener(onClickListener);
 
         return convertView;
     }
 
-    @Override
-    public void onClick(View view) {
-        Context context = view.getContext();
-
-        switch (view.getId()) {
-            case R.id.order_one_button:
-                ((MainActivityView) context).orderOneButtonTapped(product);
-                break;
-            case R.id.order_ten_button:
-                ((MainActivityView) context).orderTenButtonTapped(product);
-                break;
-        }
-    }
 
 }
