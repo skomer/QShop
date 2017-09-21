@@ -1,5 +1,11 @@
 ### Android app allowing a shop to order in new stock, and have discounts applied to the stock items.
 
+
+## Run the App
+
+[Download the APK file](https://github.com/skomer/QShop/blob/master/app-debug.apk), and install it on your Android device. Then look for an app named 'QShop'.
+
+
 ## Development
 
 I began this task by considering what the models in the app would look like, and and what state might change as a user interacted with the app. I then began to build up a simple shop, that could have products in its stock. Then, I moved on to implementing discounts applied to the products, and the shop being able to order in more stock (with discounts applied) when it wanted to. I tried to practise test-driven development throughout, which certainly helped to keep my classes functioning as expected.
@@ -21,4 +27,4 @@ The shop can:
 
 ## Diagram
 
-![alt text](https://raw.githubusercontent.com/skomer/QShop/master/qshop.png)
+![diagram](https://raw.githubusercontent.com/skomer/QShop/master/qshop.png)
