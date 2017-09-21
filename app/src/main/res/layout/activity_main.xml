@@ -75,6 +75,6 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:layout_below="@id/product"
-        android:id="@+id/stock_listview" />
+        android:id="@+id/catalogue_listview" />
 
 </RelativeLayout>

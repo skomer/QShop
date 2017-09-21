@@ -20,39 +20,52 @@ public class Presenter {
     public void onResume() {
         view.showShopBalance(Double.toString(shop.getBalance()));
         view.showShopStock(shop);
+
+        view.showCatalogueItems(productCatalogue);
     }
 
-    public void buyStock(String productName, int quantity) {
-        Product product = getProduct(productName);
+    public void buyStock(Product product, int quantity) {
+        boolean isInCatalogue = checkCatalogue(product);
 
-        double buyCost = discounter.getBuyCost(product, quantity);
-        double balance = shop.getBalance();
-        double newBalance = Math.round(balance - buyCost);
-
-        if (newBalance > 0) {
-            double discountSaving = Math.round((product.buyPrice * quantity) - buyCost);
-            shop.setStock(product.name, quantity);
-            shop.setBalance(newBalance);
-            view.showShopStock(shop);
-            view.showShopBalance(Double.toString(newBalance));
-            view.displayMessage("Product ordered.\nStock and balance updated.\nYou saved " + discountSaving + " in discounts!");
+        if (!isInCatalogue) {
+            view.displayMessage("Product not ordered.\nNot available to order.");
         } else {
-            view.displayMessage("Product not ordered.\nBalance too low.");
-        }
-    }
+            double buyCost = discounter.getBuyCost(product, quantity);
+            double balance = shop.getBalance();
 
-    private Product getProduct(String productName) {
-        for (Product product : productCatalogue) {
-            if (product.name.equals(productName)) {
-                return product;
+            double newBalance = balance - buyCost;
+
+            if (newBalance > 0) {
+                double discountSaving = Math.round((product.buyPrice * quantity) - buyCost);
+                shop.setStock(product.name, quantity);
+
+                String result = String.format("%.2f", newBalance);
+
+                shop.setBalance(newBalance);
+                view.showShopStock(shop);
+                view.showShopBalance(result);
+                view.displayMessage("Product ordered.\nStock and balance updated.\nYou saved " + discountSaving + " in discounts!");
+            } else {
+                view.displayMessage("Product not ordered.\nBalance too low.");
             }
         }
-
-        return new Product("", 0.0, 0.0, Discount.NONE);
     }
 
-    public void sellStock(String productName, int sellQuantity) {
-        Product product = getProduct(productName);
+    private boolean checkCatalogue(Product product) {
+        return productCatalogue.contains(product);
+
+
+//        for (Product product : productCatalogue) {
+//            if (product.name.equals(productName)) {
+//                return product;
+//            }
+//        }
+
+//        return new Product("", 0.0, 0.0, Discount.NONE);
+    }
+
+    public void sellStock(Product product, int sellQuantity) {
+//        Product product = checkCatalogue(product);
 
         double sellPrice = product.sellPrice * sellQuantity;
         double newBalance = shop.getBalance() + sellPrice;
@@ -73,11 +86,11 @@ public class Presenter {
     }
 
     public void orderOneButtonTapped(Product product) {
-        buyStock(product.name, 1);
+        buyStock(product, 1);
     }
 
     public void orderTenButtonTapped(Product product) {
-        buyStock(product.name, 10);
+        buyStock(product, 10);
     }
 
 }

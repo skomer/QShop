@@ -10,23 +10,23 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class StockAdapter extends ArrayAdapter<Product> implements View.OnClickListener {
+public class CatalogueAdapter extends ArrayAdapter<Product> implements View.OnClickListener {
 
     Product product;
 
-    public StockAdapter(Context context, ArrayList<Product> products) {
-        super(context, 0, products);
+    public CatalogueAdapter(Context context, ArrayList<Product> productCatalogue) {
+        super(context, 0, productCatalogue);
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         product = getItem(position);
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.stock_list_item, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.catalogue_list_item, parent, false);
         }
 
         TextView productName = (TextView) convertView.findViewById(R.id.product_name);
-        TextView productSellDiscount = (TextView) convertView.findViewById(R.id.product_sell_discount);
+        TextView productSellDiscount = (TextView) convertView.findViewById(R.id.product_discount);
         TextView productQuantity = (TextView) convertView.findViewById(R.id.product_quantity);
         Button orderOneButton = (Button) convertView.findViewById(R.id.order_one_button);
         Button orderTenButton = (Button) convertView.findViewById(R.id.order_ten_button);

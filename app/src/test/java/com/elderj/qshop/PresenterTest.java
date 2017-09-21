@@ -21,6 +21,12 @@ public class PresenterTest {
     private Discounting discounter;
     private Presenter presenter;
 
+    Product egg;
+    Product apple;
+    Product pineapple;
+    Product rice;
+    Product juice;
+
     @Before
     public void setUp() {
         view = mock(MainActivityView.class);
@@ -28,11 +34,18 @@ public class PresenterTest {
         discounter = mock(Discounting.class);
 
         ArrayList<Product> productCatalogue = new ArrayList<>();
-        productCatalogue.add(new Product("egg", 1.0, 2.0, Discount.NONE));
-        productCatalogue.add(new Product("apple", 0.5, 1.1, Discount.NONE));
-        productCatalogue.add(new Product("pineapple", 3.0, 5.5, Discount.THREEFORTWO));
-        productCatalogue.add(new Product("rice", 1.5, 3.0, Discount.NONE));
-        productCatalogue.add(new Product("juice", 0.7, 3.0, Discount.BUYTENSAVETENPERCENT));
+
+        egg = new Product("egg", 1.0, 2.0, Discount.NONE);
+        apple = new Product("apple", 0.5, 1.1, Discount.NONE);
+        pineapple = new Product("pineapple", 3.0, 5.5, Discount.THREEFORTWO);
+        rice = new Product("rice", 1.5, 3.0, Discount.NONE);
+        juice = new Product("juice", 0.7, 3.0, Discount.BUYTENSAVETENPERCENT);
+
+        productCatalogue.add(egg);
+        productCatalogue.add(apple);
+        productCatalogue.add(pineapple);
+        productCatalogue.add(rice);
+        productCatalogue.add(juice);
 
         presenter = new Presenter(view, shop, productCatalogue, discounter);
     }
@@ -56,7 +69,7 @@ public class PresenterTest {
         presenter.onResume();
         when(shop.getBalance()).thenReturn(1000.00);
         when(discounter.getBuyCost(any(Product.class), any(Integer.class))).thenReturn(1.0);
-        presenter.buyStock("egg", 1);
+        presenter.buyStock(egg, 1);
 
         verify(shop).setStock(any(String.class), any(Integer.class));
         verify(shop).setBalance(any(double.class));
@@ -68,8 +81,9 @@ public class PresenterTest {
 
     @Test
     public void if_product_not_in_product_list_presenter_does_not_buy_product() {
+        Product matches = new Product("matches", 0.5, 1.0, Discount.NONE);
         presenter.onResume();
-        presenter.buyStock("matches", 1);
+        presenter.buyStock(matches, 1);
 
         verify(shop, times(0)).setStock(any(String.class), any(Integer.class));
         verify(shop, times(0)).setBalance(any(double.class));
@@ -82,7 +96,7 @@ public class PresenterTest {
 
         when(shop.getBalance()).thenReturn(0.0);
         when(discounter.getBuyCost(any(Product.class), any(Integer.class))).thenReturn(1.0);
-        presenter.buyStock("egg", 1000);
+        presenter.buyStock(egg, 1000);
 
         verify(shop, times(0)).setStock(any(String.class), any(Integer.class));
         verify(shop, times(0)).setBalance(any(double.class));
@@ -98,7 +112,7 @@ public class PresenterTest {
 
         when(shop.getStock()).thenReturn(stock);
         when(shop.getBalance()).thenReturn(1000.00);
-        presenter.sellStock("egg", 1);
+        presenter.sellStock(egg, 1);
 
         verify(shop).setBalance(any(double.class));
         verify(shop).setStock(any(String.class), any(Integer.class));
@@ -117,7 +131,7 @@ public class PresenterTest {
 
         when(shop.getStock()).thenReturn(stock);
         when(shop.getBalance()).thenReturn(1000.00);
-        presenter.sellStock("egg", 100);
+        presenter.sellStock(egg, 100);
 
         verify(shop, times(0)).setBalance(any(double.class));
         verify(shop, times(0)).setStock(any(String.class), any(Integer.class));
@@ -126,12 +140,10 @@ public class PresenterTest {
 
     @Test
     public void on_orderOneButtonTapped_presenter_buys_stock() {
-        Product product = new Product("product", 0, 0, Discount.NONE);
-
         presenter.onResume();
         when(shop.getBalance()).thenReturn(1000.00);
         when(discounter.getBuyCost(any(Product.class), any(Integer.class))).thenReturn(1.0);
-        presenter.orderOneButtonTapped(product);
+        presenter.orderOneButtonTapped(rice);
 
         verify(shop).setStock(any(String.class), any(Integer.class));
         verify(shop).setBalance(any(double.class));
@@ -143,7 +155,7 @@ public class PresenterTest {
         presenter.onResume();
 
         when(shop.getBalance()).thenReturn(10.00);
-        presenter.buyStock("juice", 10);
+        presenter.buyStock(juice, 10);
 
         verify(discounter).getBuyCost(any(Product.class), any(Integer.class));
     }

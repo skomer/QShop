@@ -6,7 +6,7 @@ public class Discounter implements Discounting {
 
     public double getBuyCost(Product product, int quantity) {
         double discountAmount;
-        double priceBeforeDiscount = product.buyPrice * quantity;
+        double priceBeforeDiscount = product.buyPrice * ((double) quantity);
 
         switch (product.discount) {
             case NONE:
@@ -14,9 +14,9 @@ public class Discounter implements Discounting {
 
             case BOGOF:
                 if (quantity % 2 == 0) {
-                    return ((product.buyPrice * quantity) / 2);
+                    return ((product.buyPrice * quantity) / 2.0);
                 } else {
-                    int discountQuantity = (quantity - 1) / 2;
+                    double discountQuantity = (double) ((quantity - 1) / 2);
                     discountAmount = discountQuantity * product.buyPrice;
 
                     return priceBeforeDiscount - discountAmount;
@@ -31,7 +31,7 @@ public class Discounter implements Discounting {
                 } else {
                     discountQuantity = (quantity - 2) / 3;
                 }
-                discountAmount = product.buyPrice * discountQuantity;
+                discountAmount = product.buyPrice * (double) discountQuantity;
 
                 return priceBeforeDiscount - discountAmount;
 

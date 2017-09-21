@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
     Presenter presenter;
     private TextView balance;
     private TextView expandable;
-    private ListView stockListView;
+    private ListView catalogueListView;
     private TextView hideShow;
 
     @Override
@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
 
         balance = (TextView) findViewById(R.id.shop_balance);
         expandable = (TextView) findViewById(R.id.expandable);
-        stockListView = (ListView) findViewById(R.id.stock_listview);
+        catalogueListView = (ListView) findViewById(R.id.catalogue_listview);
 
         hideShow = (TextView) findViewById(R.id.hide_show);
         hideShow.setVisibility(View.GONE);
@@ -38,12 +38,13 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
         productCatalogue.add(new Product("rice", 1.5, 3.0, Discount.NONE));
         productCatalogue.add(new Product("juice", 0.7, 3.0, Discount.BUYTENSAVETENPERCENT));
 
-        StockAdapter adapter = new StockAdapter(this, productCatalogue);
-        stockListView.setAdapter(adapter);
-
         Map<String, Integer> stock = new HashMap();
         stock.put("egg", 100);
         stock.put("apple", 100);
+
+        CatalogueAdapter adapter = new CatalogueAdapter(this, productCatalogue);
+        catalogueListView.setAdapter(adapter);
+
 
         presenter = new Presenter(this, new Shop(stock, 1000.0), productCatalogue, new Discounter());
     }
@@ -66,6 +67,10 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
 
     public void showShopBalance(String shopBalance) {
         balance.setText(shopBalance);
+    }
+
+    public void showCatalogueItems() {
+        
     }
 
     public void orderOneButtonTapped(Product product) {
