@@ -135,7 +135,7 @@ public class PresenterTest {
         presenter.onResume();
         when(shop.getBalance()).thenReturn(1000.00);
         when(discounter.getBuyCost(any(Product.class), any(Integer.class))).thenReturn(1.0);
-        presenter.orderOneButtonTapped(rice);
+        presenter.orderOneButtonTapped(0);
 
         verify(shop).setStock(any(String.class), any(Integer.class));
         verify(shop).setBalance(any(double.class));
