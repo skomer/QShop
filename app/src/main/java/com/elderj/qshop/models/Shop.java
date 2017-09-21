@@ -1,4 +1,4 @@
-package com.elderj.qshop;
+package com.elderj.qshop.models;
 
 import java.util.Map;
 

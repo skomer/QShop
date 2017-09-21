@@ -1,5 +1,10 @@
 package com.elderj.qshop;
 
+import com.elderj.qshop.discounts.Discount;
+import com.elderj.qshop.discounts.Discounter;
+import com.elderj.qshop.discounts.Discounting;
+import com.elderj.qshop.models.Product;
+
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;

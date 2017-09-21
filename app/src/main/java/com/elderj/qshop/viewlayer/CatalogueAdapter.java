@@ -1,4 +1,4 @@
-package com.elderj.qshop;
+package com.elderj.qshop.viewlayer;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,6 +7,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.elderj.qshop.models.Product;
+import com.elderj.qshop.R;
 
 import java.util.ArrayList;
 

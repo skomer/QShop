@@ -1,4 +1,4 @@
-package com.elderj.qshop;
+package com.elderj.qshop.viewlayer;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +7,12 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.elderj.qshop.Presenter;
+import com.elderj.qshop.models.Product;
+import com.elderj.qshop.R;
+import com.elderj.qshop.models.Shop;
+import com.elderj.qshop.discounts.Discounter;
 
 import java.util.ArrayList;
 import java.util.HashMap;

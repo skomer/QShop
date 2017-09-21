@@ -1,4 +1,4 @@
-package com.elderj.qshop;
+package com.elderj.qshop.discounts;
 
 public enum Discount {
 

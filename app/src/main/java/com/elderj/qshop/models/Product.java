@@ -1,4 +1,6 @@
-package com.elderj.qshop;
+package com.elderj.qshop.models;
+
+import com.elderj.qshop.discounts.Discount;
 
 public class Product {
 

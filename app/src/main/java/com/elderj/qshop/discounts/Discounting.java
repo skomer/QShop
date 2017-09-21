@@ -1,4 +1,6 @@
-package com.elderj.qshop;
+package com.elderj.qshop.discounts;
+
+import com.elderj.qshop.models.Product;
 
 public interface Discounting {
 

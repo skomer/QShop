@@ -1,5 +1,8 @@
-package com.elderj.qshop;
+package com.elderj.qshop.viewlayer;
 
+
+import com.elderj.qshop.models.Product;
+import com.elderj.qshop.models.Shop;
 
 import java.util.ArrayList;
 

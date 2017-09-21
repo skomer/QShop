@@ -1,5 +1,11 @@
 package com.elderj.qshop;
 
+import com.elderj.qshop.discounts.Discount;
+import com.elderj.qshop.discounts.Discounting;
+import com.elderj.qshop.models.Product;
+import com.elderj.qshop.models.Shop;
+import com.elderj.qshop.viewlayer.MainActivityView;
+
 import java.util.ArrayList;
 import java.util.Map;
 
